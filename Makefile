@@ -18,9 +18,12 @@ LDFLAGS := -T link.ld -nostdlib --no-warn-rwx-segments
 
 OBJS    := start.o stub.o
 
-all: flash.bin cpuspeed
+all: flash.bin ddr cpuspeed
 
 # On-target blobs the scripts upload and run (separate bare-metal builds).
+ddr:
+	$(MAKE) -C scripts/ssd20x/ddr_c CROSS=$(CROSS)
+
 cpuspeed:
 	$(MAKE) -C scripts/common/cpuspeed_c CROSS=$(CROSS)
 
@@ -48,6 +51,7 @@ dis: stub.elf
 
 clean:
 	rm -f $(OBJS) stub.elf stub.bin stub.ipl flash.bin
+	$(MAKE) -C scripts/ssd20x/ddr_c clean
 	$(MAKE) -C scripts/common/cpuspeed_c clean
 
-.PHONY: all dis clean cpuspeed
+.PHONY: all dis clean ddr cpuspeed
