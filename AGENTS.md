@@ -33,6 +33,26 @@ testing on hardware.
 Python is 3, standard library only. Keep it that way: the client has to run
 on whatever laptop the board is wired to.
 
+The C client in `cli/` follows the smol* single-header pattern:
+
+```sh
+make -C cli                                            # libc build, -Wall -Wextra clean
+make -C cli NOLIBCDIR=<linux>/tools/include/nolibc \
+            NOLIBCEXTDIR=<nolibc-extensions> TARWAK=<tarwak>   # + static binary + rootfs tar
+```
+
+`cli/mstarpoker.h` is the whole client (`static inline`, include it in one
+translation unit); `cli/mstarpoker.c` is the tool. Public functions are
+`mstarpoker_*`, internals `__mstarpoker_*`, errors are negated
+`MSTARPOKER_ERR_*`. Under nolibc there is no libc beyond what
+`nolibc.h` and `nolibc-extensions` provide (the unix socket comes from the
+extensions), so keep to `open/read/write/poll/ioctl` and `printf`; guard
+libc-only includes with `#ifndef NOLIBC` like the existing code. Test both
+builds against the stub in QEMU (`-u /tmp/s.ser`) before committing: at
+least `ping`, a `load`/`save` round trip, and `go` on a program that
+returns and on one that faults (the monitor must come back with `MPOK1`
+and `faults` must count it).
+
 ## Run it in QEMU
 
 The `miyoomini` machine and the SSD202D mask-ROM dump live in the MStar
@@ -94,6 +114,10 @@ shows as no RX at all, a wrong baud as garbage.
   disables it on silicon; MPLL is 432 MHz; replaying captured DDR writes
   cannot train real DRAM (the ZQ calibration is read-modify-write on
   analog results). The `VALIDATION.md` log has the evidence for each.
+- After `mstarpoker_go()` the stub's replies to anything sent while the
+  uploaded code runs arrive late, so `mstarpoker_sync()` drains the link
+  after it matches a pong. Keep that: without it the next command reads a
+  stale `SB01` as its reply.
 - Commit messages: plain subject and body, no trailers.
 
 ## Layout
@@ -104,6 +128,7 @@ shows as no RX at all, a wrong baud as garbage.
 | `start.S`, `link.ld` | loader header, entry, vector table, SRAM placement (SoC adapter) |
 | `mkipl.py`, `mkflash.py` | IPL header (size + word checksum) and 16 MiB NOR image |
 | `mstarpoker.py` | host client: `Link` library + CLI, socket and termios transports |
+| `cli/` | the client in C: `mstarpoker.h` single header, `mstarpoker` tool, nolibc + tarwak build |
 | `socid.py`, `regdump.py` | chip identification; register snapshots / diffs / JSON |
 | `scripts/common/` | target-independent probes: boot ROM dump, PM regs, memory detect, timer / cpupll / cpuspeed blob |
 | `scripts/ssd20x/` | SSD20x: DDR sequence + C trainer (`ddr_c/`), `ddr.py`, `dram_test.py`, MIU/MPLL PLL tests, USB PHY driver |

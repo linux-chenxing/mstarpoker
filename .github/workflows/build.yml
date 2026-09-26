@@ -41,3 +41,46 @@ jobs:
             flash.bin
             scripts/ssd20x/ddr_c/ddr_init.bin
             scripts/common/cpuspeed_c/cpuspeed.bin
+
+  cli:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the C client against libc
+        run: make -C cli
+
+      - name: Install tarwak build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential \
+            meson ninja-build libarchive-dev libcjson-dev libcap-dev
+
+      - name: Build tarwak
+        run: |
+          git clone --depth 1 https://github.com/fifteenhex/tarwak.git
+          cd tarwak && meson setup build && meson compile -C build
+
+      - name: Fetch nolibc and nolibc-extensions
+        run: |
+          git clone --depth 1 --filter=blob:none --sparse --branch v7.2 \
+            https://github.com/torvalds/linux.git
+          git -C linux sparse-checkout set tools/include/nolibc
+          git clone --depth 1 https://github.com/fifteenhex/nolibc-extensions.git
+
+      - name: Build the static binary and the rootfs tarball
+        run: |
+          make -C cli NOLIBCDIR="$PWD/linux/tools/include/nolibc" \
+               NOLIBCEXTDIR="$PWD/nolibc-extensions" \
+               TARWAK="$PWD/tarwak/build/tarwak"
+          file cli/mstarpoker_nolibc
+          tar tvf cli/mstarpoker.tar
+
+      - name: Upload the C client
+        uses: actions/upload-artifact@v4
+        with:
+          name: mstarpoker-cli
+          path: |
+            cli/mstarpoker
+            cli/mstarpoker_nolibc
+            cli/mstarpoker.tar

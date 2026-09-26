@@ -170,6 +170,14 @@ lk.dump(0x1f206400, 0x80)                  # a whole RIU bank
 lk.upload(0xa0009000, open("p.bin","rb").read()); lk.go(0xa0009000)
 ```
 
+### C client — `cli/mstarpoker`
+
+The same client as a single C header (`cli/mstarpoker.h`, all `static
+inline`) with a command-line tool in front of it, for hosts without
+Python: it builds against libc or as a static nolibc binary. Same
+commands, plus `rd8`/`wr8`/`wr16`, `save` (download memory to a file) and
+`console` (stream what the target prints). See `cli/` and the README.
+
 ## 7. Runtime environment and caveats
 
 * The stub runs from **on-chip SRAM** (IMI, `0xa0000000`, 64 KiB). Its
@@ -211,6 +219,7 @@ The protocol (`stub.c`'s command loop) and `mstarpoker.py` are unchanged.
 | `mkipl.py`      | wrap a raw binary in the loader header (size + checksum) |
 | `mkflash.py`    | pad an IPL into a 16 MiB SPI-NOR image                   |
 | `mstarpoker.py` | host-side protocol client (CLI + `Link` library)         |
+| `cli/`          | the client in C: single header + command-line tool       |
 | `socid.py`      | SoC identification helpers (chip version, bond strap)    |
 | `regdump.py`    | register snapshot / before-after tables for the scripts  |
 | `scripts/`      | probe and bring-up scripts (`common/` any target, `ssd20x/` SoC-specific) |

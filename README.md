@@ -30,6 +30,32 @@ python3 mstarpoker.py --serial /dev/ttyUSB0 rd 0x1f203d20
 Writing `flash.bin` to a device overwrites its stock firmware; the stub
 never writes the flash itself.
 
+## C client
+
+`cli/` has the same client as a single C header plus a command-line tool,
+in the style of the smol* tools: no dependencies, builds against libc or
+as a fully static nolibc binary, and packs into a tarwak rootfs so it can
+run on a small Linux box wired to the target.
+
+```sh
+make -C cli                                    # -> cli/mstarpoker
+cli/mstarpoker -u /tmp/s.ser ping              # QEMU socket
+cli/mstarpoker -s /dev/ttyUSB0 probe 0x1f224400
+cli/mstarpoker -s /dev/ttyUSB0 load 0xa0009000 prog.bin
+cli/mstarpoker -s /dev/ttyUSB0 go 0xa0009000   # ...then prints what it says
+```
+
+Commands: `ping`, `faults`, `probe`, `rd`, `wr`, `rd8`, `wr8`, `wr16`,
+`dump`, `save`, `load`, `go`, `console`. `-v` traces every frame. To use
+it from C, include `cli/mstarpoker.h` in one translation unit:
+
+```c
+struct mstarpoker m = { 0 };
+mstarpoker_open_serial(&m, "/dev/ttyUSB0", 38400);
+mstarpoker_sync(&m);
+mstarpoker_read32(&m, 0x1f203d20, &val);
+```
+
 ## Layout
 
 | Path            | What                                                       |
@@ -37,6 +63,7 @@ never writes the flash itself.
 | `stub.c`, `start.S`, `link.ld`, `Makefile` | the monitor, built to run from SRAM |
 | `mkipl.py`, `mkflash.py` | wrap the stub in the ROM's loader header and a NOR image |
 | `mstarpoker.py` | host client: CLI and the `Link` library                    |
+| `cli/`          | the same client in C: `mstarpoker.h` single header + `mstarpoker` tool, nolibc/tarwak build |
 | `socid.py`, `regdump.py` | helpers shared by the scripts                     |
 | `scripts/common/` | probes for any target: boot ROM dump, PM registers, timers, PLLs |
 | `scripts/ssd20x/` | SSD20x bring-up: DDR/MIU init and DRAM test, USB PHY, Miyoo Mini display and audio |
