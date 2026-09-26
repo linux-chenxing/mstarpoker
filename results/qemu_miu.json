@@ -1,0 +1,2538 @@
+{
+  "before": [
+    {
+      "addr": "0x1f202000",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202004",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202008",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202010",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202014",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20201c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202030",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202034",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202038",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20203c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202044",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202048",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202058",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20205c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202060",
+      "name": "DDFSET_L",
+      "value": "0x00008000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202064",
+      "name": "DDFSET_H",
+      "value": "0x00000029",
+      "note": null
+    },
+    {
+      "addr": "0x1f202068",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20206c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202070",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202074",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202078",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20207c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202090",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202094",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202098",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20209c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020a0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020a8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020b0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020b4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020b8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020bc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020d8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020dc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020e0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020e8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020ec",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020f0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020f8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202110",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202114",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202120",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202128",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202130",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202134",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202140",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202144",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202148",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20214c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202150",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202154",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202158",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20215c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20216c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202170",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202174",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202178",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20217c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021a0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021a8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021ac",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021b0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202200",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20220c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202224",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202240",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20224c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202264",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023c1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023c5",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023d1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023d4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023d5",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023d8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023d9",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023f0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023f1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202400",
+      "name": "CNTRL0",
+      "value": "0x00008000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202404",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202408",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20240c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202410",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202414",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202418",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20241c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202420",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202424",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202428",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20242c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20243c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202450",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202458",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202480",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202481",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202484",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202485",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202488",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202489",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20248c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202490",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202491",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202494",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202495",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202498",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202499",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20249c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20249d",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024a0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024a1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024b8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024b9",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024c1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024c5",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024c9",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024d1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024d4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024d5",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024d8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024d9",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024dc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024dd",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024e0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024e1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024e4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202500",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202501",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202504",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202505",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202508",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202509",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20250c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202510",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202511",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202514",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202515",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202518",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202519",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20251c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20251d",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202520",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202521",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202524",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202540",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202541",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202544",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202545",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202548",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202549",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20254c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202550",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202551",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202554",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202555",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202558",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202559",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20255c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20255d",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202560",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202561",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202564",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025bc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025c0",
+      "name": "BIST_CTRL",
+      "value": "0x00008000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025e0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025f8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025fc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025fd",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202644",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202680",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202684",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202688",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20268c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202690",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202694",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202698",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20269c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2026a0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2026a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2026a8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202700",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20270c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2027fc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    }
+  ],
+  "after": [
+    {
+      "addr": "0x1f202000",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202004",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202008",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202010",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202014",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20201c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202030",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202034",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202038",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20203c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202044",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202048",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202058",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20205c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202060",
+      "name": "DDFSET_L",
+      "value": "0x00008000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202064",
+      "name": "DDFSET_H",
+      "value": "0x00000029",
+      "note": null
+    },
+    {
+      "addr": "0x1f202068",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20206c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202070",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202074",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202078",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20207c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202090",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202094",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202098",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20209c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020a0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020a8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020b0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020b4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020b8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020bc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020d8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020dc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020e0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020e8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020ec",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020f0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2020f8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202110",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202114",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202120",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202128",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202130",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202134",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202140",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202144",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202148",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20214c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202150",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202154",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202158",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20215c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20216c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202170",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202174",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202178",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20217c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021a0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021a8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021ac",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021b0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2021d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202200",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20220c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202224",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202240",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20224c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202264",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2022d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023c1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023c5",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023d1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023d4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023d5",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023d8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023d9",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2023f0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2023f1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202400",
+      "name": "CNTRL0",
+      "value": "0x00008000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202404",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202408",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20240c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202410",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202414",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202418",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20241c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202420",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202424",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202428",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20242c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20243c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202450",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202458",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202480",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202481",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202484",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202485",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202488",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202489",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20248c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202490",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202491",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202494",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202495",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202498",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202499",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20249c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20249d",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024a0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024a1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024b8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024b9",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024c0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024c1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024c5",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024c9",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024d1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024d4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024d5",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024d8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024d9",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024dc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024dd",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024e0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2024e1",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f2024e4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202500",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202501",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202504",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202505",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202508",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202509",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20250c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202510",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202511",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202514",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202515",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202518",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202519",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20251c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20251d",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202520",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202521",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202524",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202540",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202541",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202544",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202545",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202548",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202549",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20254c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202550",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202551",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202554",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202555",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202558",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202559",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f20255c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20255d",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202560",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202561",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202564",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025bc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025c0",
+      "name": "BIST_CTRL",
+      "value": "0x00008000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025c4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025c8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025cc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025d0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025e0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025f8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025fc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2025fd",
+      "name": "",
+      "value": null,
+      "note": "fault"
+    },
+    {
+      "addr": "0x1f202644",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202680",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202684",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202688",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20268c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202690",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202694",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202698",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20269c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2026a0",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2026a4",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2026a8",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f202700",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f20270c",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2027fc",
+      "name": "",
+      "value": "0x00000000",
+      "note": null
+    }
+  ]
+}

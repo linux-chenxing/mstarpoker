@@ -1,0 +1,16 @@
+{
+  "registers": [
+    {
+      "addr": "0x1f203d20",
+      "name": "bond strap",
+      "value": "0x0000001e",
+      "note": null
+    },
+    {
+      "addr": "0x1f003d9c",
+      "name": "chip version",
+      "value": "0x00000100",
+      "note": null
+    }
+  ]
+}

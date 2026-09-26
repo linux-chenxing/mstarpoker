@@ -1,0 +1,2 @@
+# ROM dumps are vendor code; only their hash is kept (bootrom.sha256)
+*.bin

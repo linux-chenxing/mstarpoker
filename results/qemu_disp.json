@@ -1,0 +1,282 @@
+{
+  "before": [
+    {
+      "addr": "0x1f225240",
+      "name": "pnl+0x40",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225244",
+      "name": "pnl+0x44",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225248",
+      "name": "pnl+0x48",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225250",
+      "name": "pnl+0x50",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225258",
+      "name": "pnl+0x58",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f22525c",
+      "name": "pnl+0x5c",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225260",
+      "name": "pnl+0x60",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225264",
+      "name": "pnl+0x64",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225268",
+      "name": "pnl+0x68",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225270",
+      "name": "pnl+0x70",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225274",
+      "name": "pnl+0x74",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225278",
+      "name": "pnl+0x78",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f22527c",
+      "name": "pnl+0x7c",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f225280",
+      "name": "pnl+0x80",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f003410",
+      "name": "pwm_period",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f003408",
+      "name": "pwm_duty",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f00341c",
+      "name": "pwm_enable",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2468c0",
+      "name": "gop_stretch_w",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2468c4",
+      "name": "gop_stretch_h",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f246a04",
+      "name": "gop_win0_addrl",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f246a08",
+      "name": "gop_win0_addrh",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f246a24",
+      "name": "gop_win0_pitch",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f246a00",
+      "name": "gop_win0",
+      "value": "0x00000000",
+      "note": null
+    }
+  ],
+  "after": [
+    {
+      "addr": "0x1f225240",
+      "name": "pnl+0x40",
+      "value": "0x00000004",
+      "note": null
+    },
+    {
+      "addr": "0x1f225244",
+      "name": "pnl+0x44",
+      "value": "0x000002e3",
+      "note": null
+    },
+    {
+      "addr": "0x1f225248",
+      "name": "pnl+0x48",
+      "value": "0x000001f8",
+      "note": null
+    },
+    {
+      "addr": "0x1f225250",
+      "name": "pnl+0x50",
+      "value": "0x00000003",
+      "note": null
+    },
+    {
+      "addr": "0x1f225258",
+      "name": "pnl+0x58",
+      "value": "0x00000003",
+      "note": null
+    },
+    {
+      "addr": "0x1f22525c",
+      "name": "pnl+0x5c",
+      "value": "0x00000034",
+      "note": null
+    },
+    {
+      "addr": "0x1f225260",
+      "name": "pnl+0x60",
+      "value": "0x000002b3",
+      "note": null
+    },
+    {
+      "addr": "0x1f225264",
+      "name": "pnl+0x64",
+      "value": "0x0000000f",
+      "note": null
+    },
+    {
+      "addr": "0x1f225268",
+      "name": "pnl+0x68",
+      "value": "0x000001ee",
+      "note": null
+    },
+    {
+      "addr": "0x1f225270",
+      "name": "pnl+0x70",
+      "value": "0x00000034",
+      "note": null
+    },
+    {
+      "addr": "0x1f225274",
+      "name": "pnl+0x74",
+      "value": "0x000002b3",
+      "note": null
+    },
+    {
+      "addr": "0x1f225278",
+      "name": "pnl+0x78",
+      "value": "0x0000000f",
+      "note": null
+    },
+    {
+      "addr": "0x1f22527c",
+      "name": "pnl+0x7c",
+      "value": "0x000001ee",
+      "note": null
+    },
+    {
+      "addr": "0x1f225280",
+      "name": "pnl+0x80",
+      "value": "0x00008000",
+      "note": null
+    },
+    {
+      "addr": "0x1f003410",
+      "name": "pwm_period",
+      "value": "0x00000fff",
+      "note": null
+    },
+    {
+      "addr": "0x1f003408",
+      "name": "pwm_duty",
+      "value": "0x00000800",
+      "note": null
+    },
+    {
+      "addr": "0x1f00341c",
+      "name": "pwm_enable",
+      "value": "0x00000001",
+      "note": null
+    },
+    {
+      "addr": "0x1f2468c0",
+      "name": "gop_stretch_w",
+      "value": "0x00000140",
+      "note": null
+    },
+    {
+      "addr": "0x1f2468c4",
+      "name": "gop_stretch_h",
+      "value": "0x000001e0",
+      "note": null
+    },
+    {
+      "addr": "0x1f246a04",
+      "name": "gop_win0_addrl",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f246a08",
+      "name": "gop_win0_addrh",
+      "value": "0x00000001",
+      "note": null
+    },
+    {
+      "addr": "0x1f246a24",
+      "name": "gop_win0_pitch",
+      "value": "0x00000050",
+      "note": null
+    },
+    {
+      "addr": "0x1f246a00",
+      "name": "gop_win0",
+      "value": "0x00000011",
+      "note": null
+    }
+  ]
+}

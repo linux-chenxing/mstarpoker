@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# sha256 of the SSD202D mask ROM (16 KiB) as dumped from hardware with
+# scripts/common/dump_bootrom.py, and of the ROM image the QEMU miyoomini
+# machine boots; the two are byte-identical. The dumps themselves are
+# vendor code and are not kept in this repository.
+4a726c083f30f55872d5db421c482170424520c077f17397e0731c7298074cfb  hw_bootrom_16k.bin
+4a726c083f30f55872d5db421c482170424520c077f17397e0731c7298074cfb  qemu_bootrom_16k.bin

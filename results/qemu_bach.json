@@ -1,0 +1,78 @@
+{
+  "before": [
+    {
+      "addr": "0x1f2a0500",
+      "name": "rd_ctrl0",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a0504",
+      "name": "rd_en",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a0508",
+      "name": "rd_addr",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a050c",
+      "name": "rd_size",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a0510",
+      "name": "rd_trigger",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a0518",
+      "name": "rd_underrun",
+      "value": "0x00000000",
+      "note": null
+    }
+  ],
+  "after": [
+    {
+      "addr": "0x1f2a0500",
+      "name": "rd_ctrl0",
+      "value": "0x00000000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a0504",
+      "name": "rd_en",
+      "value": "0x0000c000",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a0508",
+      "name": "rd_addr",
+      "value": "0x00000040",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a050c",
+      "name": "rd_size",
+      "value": "0x00005622",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a0510",
+      "name": "rd_trigger",
+      "value": "0x00005622",
+      "note": null
+    },
+    {
+      "addr": "0x1f2a0518",
+      "name": "rd_underrun",
+      "value": "0x00000008",
+      "note": null
+    }
+  ]
+}
