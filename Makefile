@@ -18,7 +18,11 @@ LDFLAGS := -T link.ld -nostdlib --no-warn-rwx-segments
 
 OBJS    := start.o stub.o
 
-all: flash.bin
+all: flash.bin cpuspeed
+
+# On-target blobs the scripts upload and run (separate bare-metal builds).
+cpuspeed:
+	$(MAKE) -C scripts/common/cpuspeed_c CROSS=$(CROSS)
 
 start.o: start.S
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -44,5 +48,6 @@ dis: stub.elf
 
 clean:
 	rm -f $(OBJS) stub.elf stub.bin stub.ipl flash.bin
+	$(MAKE) -C scripts/common/cpuspeed_c clean
 
-.PHONY: all dis clean
+.PHONY: all dis clean cpuspeed
