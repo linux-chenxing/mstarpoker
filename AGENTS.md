@@ -143,6 +143,13 @@ shows as no RX at all, a wrong baud as garbage.
   the console tail relies on that to show the target's last words.
 - The port is never shared. `console` and `ymodem` do not sync (the stub
   is gone once the SPL owns the UART); everything else does.
+- The option string starts with `+` so glibc's getopt does not permute:
+  `go <addr> -1` must reach the command as a positional. nolibc's getopt
+  never permutes and ignores the `+`.
+- `mstarpoker_console()` does one `read()` per `poll()` and writes it out
+  at once; do not turn it back into a fill-the-buffer read, or output
+  stalls until 256 bytes have arrived (an SPL waiting for YMODEM prints
+  one `C` every 2 s and would look dead).
 - Commit messages: plain subject and body, no trailers.
 
 ## Layout

@@ -22,7 +22,8 @@
  *	spl <spl.bin> <u-boot.img> [addr] [idle_ms]
  *	                            the U-Boot handoff: load + go the SPL, echo
  *	                            it until it asks for U-Boot, send that over
- *	                            YMODEM, then print the console
+ *	                            YMODEM, then print the console. If the SPL
+ *	                            finds U-Boot in flash first, nothing is sent.
  *
  * Numbers take a 0x prefix for hex. One transport is required: -s for a
  * real serial port (38400 8N1 by default, the rate the ROM leaves uart0
@@ -209,7 +210,7 @@ int main(int argc, char **argv)
 	int opt, ret, nargs;
 	char **args;
 
-	while ((opt = getopt(argc, argv, "s:u:b:t:w:v")) != -1) {
+	while ((opt = getopt(argc, argv, "+s:u:b:t:w:v")) != -1) {
 		switch (opt) {
 		case 's':
 			serial = optarg;
@@ -393,7 +394,10 @@ int main(int argc, char **argv)
 				MSTARPOKER_SPL_MARKER);
 		else if (ret == -MSTARPOKER_ERR_PROTO)
 			fprintf(stderr, "[spl] upload verify failed: the first word read back differs\n");
-		if (!ret) {
+		if (ret == 1) {
+			fprintf(stderr, "\n[spl] U-Boot came up by itself (loaded from flash); nothing sent\n");
+			ret = tail_console(&m, idle);
+		} else if (!ret) {
 			fprintf(stderr, "\n[spl] sent %s (%u bytes) over YMODEM\n",
 				args[1], (unsigned int) uboot_len);
 			ret = tail_console(&m, idle);

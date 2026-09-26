@@ -54,7 +54,9 @@ every frame and every YMODEM block.
 opened once: it uploads a mstarpoker-flavoured SPL to 0xa0004000, checks
 it, runs it, echoes the SPL's console until it prints
 `Trying to boot from UART`, then sends U-Boot over YMODEM and keeps
-echoing the console. The sender is tuned to U-Boot's xyzModem receiver
+echoing the console. If the SPL finds U-Boot in the SPI-NOR first (its
+banner appears instead), nothing is sent and the console is just
+echoed. The sender is tuned to U-Boot's xyzModem receiver
 (lazy ACKs, no second `C` after the header block, ACK-ACK-`C` on EOT).
 `ymodem <file>` is the bare primitive for scripting.
 

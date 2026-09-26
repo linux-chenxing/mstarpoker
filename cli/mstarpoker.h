@@ -76,6 +76,11 @@
  */
 #define MSTARPOKER_SPL_ADDR	0xa0004000u
 #define MSTARPOKER_SPL_MARKER	"Trying to boot from UART"
+/* ...and what U-Boot proper prints first if the SPL found it elsewhere
+ * (in the SPI-NOR, say), in which case there is nothing to send. The SPL's
+ * own banner is "U-Boot SPL 20..", which this does not match.
+ */
+#define MSTARPOKER_UBOOT_MARKER	"U-Boot 20"
 
 struct mstarpoker {
 	int fd;
@@ -619,16 +624,33 @@ static inline ssize_t mstarpoker_console(struct mstarpoker *m, int fd_out,
 	ssize_t total = 0;
 
 	for (;;) {
+		struct pollfd pfd = { .fd = m->fd, .events = POLLIN };
 		uint8_t buf[256];
-		ssize_t n = __mstarpoker_read_some(m, buf, sizeof(buf), idle_ms);
+		ssize_t n;
+		int ret;
 
-		if (n == -MSTARPOKER_ERR_CLOSED)
-			return total;		/* a socket peer went away: the end */
-		if (n < 0)
-			return n;
+		/* one read per poll, so text shows up as it arrives rather
+		 * than once a buffer's worth has accumulated
+		 */
+		ret = poll(&pfd, 1, idle_ms);
+		if (ret < 0) {
+			if (errno == EINTR)
+				continue;
+			return -MSTARPOKER_ERR_IO;
+		}
+		if (ret == 0)
+			return total;		/* quiet for idle_ms: done */
+
+		n = read(m->fd, buf, sizeof(buf));
 		if (n == 0)
-			return total;
+			return total;		/* a socket peer went away: the end */
+		if (n < 0) {
+			if (errno == EINTR || errno == EAGAIN)
+				continue;
+			return -MSTARPOKER_ERR_IO;
+		}
 
+		__mstarpoker_trace(m, "RX", buf, (size_t) n);
 		total += n;
 		if (write(fd_out, buf, (size_t) n) < 0)
 			return -MSTARPOKER_ERR_IO;
@@ -654,17 +676,42 @@ static inline void __mstarpoker_echo(int fd_out, uint8_t b)
 			return;
 }
 
+/* Incremental match of one marker against a byte stream. */
+struct __mstarpoker_match {
+	const char *s;
+	size_t len, at;
+};
+
+static inline bool __mstarpoker_match_feed(struct __mstarpoker_match *mt,
+					   uint8_t b)
+{
+	if (!mt->s)
+		return false;
+	/* plain prefix match; the markers have no repeated prefix */
+	if (b == (uint8_t) mt->s[mt->at]) {
+		if (++mt->at == mt->len) {
+			mt->at = 0;
+			return true;
+		}
+	} else {
+		mt->at = b == (uint8_t) mt->s[0] ? 1 : 0;
+	}
+	return false;
+}
+
 /*
- * Echo the console to fd_out (-1: discard) until `marker` has been seen or
- * timeout_ms has passed. 0 when found, -TIMEOUT otherwise. Used to spot
- * the SPL reaching its UART boot stage before starting YMODEM, so a 'C' in
- * earlier console text (say "CPUPLL") cannot start the transfer early.
+ * Echo the console to fd_out (-1: discard) until `marker` (returns 1) or
+ * `alt` (returns 2, may be NULL) has been seen, or timeout_ms has passed
+ * (-TIMEOUT). Used to spot the SPL reaching its UART boot stage before
+ * starting YMODEM, so a 'C' in earlier console text (say "CPUPLL") cannot
+ * start the transfer early - or to notice it found U-Boot somewhere else.
  */
 static inline int mstarpoker_wait_marker(struct mstarpoker *m,
-					 const char *marker, int timeout_ms,
-					 int fd_out)
+					 const char *marker, const char *alt,
+					 int timeout_ms, int fd_out)
 {
-	size_t mlen = strlen(marker), matched = 0;
+	struct __mstarpoker_match m1 = { marker, strlen(marker), 0 };
+	struct __mstarpoker_match m2 = { alt, alt ? strlen(alt) : 0, 0 };
 	long deadline = __mstarpoker_now_ms() + timeout_ms;
 
 	while (__mstarpoker_now_ms() < deadline) {
@@ -677,14 +724,10 @@ static inline int mstarpoker_wait_marker(struct mstarpoker *m,
 			continue;
 
 		__mstarpoker_echo(fd_out, b);
-
-		/* plain prefix match; the marker has no repeated prefix */
-		if (b == (uint8_t) marker[matched]) {
-			if (++matched == mlen)
-				return 0;
-		} else {
-			matched = b == (uint8_t) marker[0] ? 1 : 0;
-		}
+		if (__mstarpoker_match_feed(&m1, b))
+			return 1;
+		if (__mstarpoker_match_feed(&m2, b))
+			return 2;
 	}
 
 	return -MSTARPOKER_ERR_TIMEOUT;
@@ -937,7 +980,9 @@ static inline int mstarpoker_ymodem_send(struct mstarpoker *m, const char *name,
  * the SPL prints is lost to a reopen: upload the SPL, check the first word
  * came back, run it, echo its console until it reaches its UART boot stage
  * (or timeout_ms passes), then send U-Boot over YMODEM. Returns 0 once the
- * transfer is done; the console is left for mstarpoker_console().
+ * transfer is done, or 1 if the SPL found U-Boot by itself (its banner
+ * appeared before the UART stage) so nothing needed sending; either way
+ * the console is left for mstarpoker_console().
  */
 static inline int mstarpoker_spl(struct mstarpoker *m, uint32_t addr,
 				 const uint8_t *spl, size_t spl_len,
@@ -962,9 +1007,12 @@ static inline int mstarpoker_spl(struct mstarpoker *m, uint32_t addr,
 	if (ret)
 		return ret;
 
-	ret = mstarpoker_wait_marker(m, MSTARPOKER_SPL_MARKER, timeout_ms, fd_out);
-	if (ret)
+	ret = mstarpoker_wait_marker(m, MSTARPOKER_SPL_MARKER,
+				     MSTARPOKER_UBOOT_MARKER, timeout_ms, fd_out);
+	if (ret < 0)
 		return ret;
+	if (ret == 2)
+		return 1;
 
 	return mstarpoker_ymodem_send(m, uboot_name, uboot, uboot_len, fd_out);
 }
