@@ -1,0 +1,5 @@
+# build artifacts
+*.o
+stub.elf
+stub.bin
+__pycache__/
