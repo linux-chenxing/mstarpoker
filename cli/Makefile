@@ -1,5 +1,14 @@
 COPTS = -ggdb -std=c99 -Os
 
+# Cross builds: CROSS_COMPILE=<prefix> picks the compiler; UAPIDIR=<dir>
+# (one or more, space separated) adds the target's kernel UAPI headers,
+# which a static nolibc build needs (nolibc's std.h includes
+# <linux/types.h>, and the serial code wants <asm/termbits.h> for
+# termios2) - the host's headers are the wrong architecture.
+ifdef CROSS_COMPILE
+CC := $(CROSS_COMPILE)gcc
+endif
+
 # -Wall and -Wextra only on the libc build: nolibc-extensions defines a lot
 # it does not use, so a static build buries anything of ours in
 # -Wunused-function.
@@ -23,7 +32,8 @@ else
 NOLIBC_PROGS := $(addsuffix _nolibc,$(PROGS))
 all: $(NOLIBC_PROGS)
 
-NOLIBC_INC = -include $(NOLIBCDIR)/nolibc.h \
+NOLIBC_INC = $(addprefix -I,$(UAPIDIR)) \
+	     -include $(NOLIBCDIR)/nolibc.h \
 	     -include $(NOLIBCEXTDIR)/include/nolibc-extensions.h
 
 $(NOLIBC_PROGS): %_nolibc: %.c $(HDR)
