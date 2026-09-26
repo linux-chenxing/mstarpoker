@@ -2,7 +2,7 @@
 /*
  * Drive the mstarpoker serial monitor from the command line.
  *
- *	mstarpoker [-s <serial> [-b baud] | -u <socket>] [-t ms] [-v] <cmd> ...
+ *	mstarpoker [-s <serial> [-b baud] | -u <socket>] [-t ms] [-w ms] [-v] <cmd> ...
  *
  *	ping                        is the stub there?
  *	faults                      faults the stub has caught so far
@@ -17,10 +17,20 @@
  *	load <addr> <file>          upload a file to memory
  *	go <addr> [idle_ms]         call addr, then print its output
  *	console [idle_ms]           print whatever the target sends
+ *	ymodem <file> [idle_ms]     wait for the receiver's 'C', send the file,
+ *	                            then print what follows
+ *	spl <spl.bin> <u-boot.img> [addr] [idle_ms]
+ *	                            the U-Boot handoff: load + go the SPL, echo
+ *	                            it until it asks for U-Boot, send that over
+ *	                            YMODEM, then print the console
  *
  * Numbers take a 0x prefix for hex. One transport is required: -s for a
  * real serial port (38400 8N1 by default, the rate the ROM leaves uart0
- * at) or -u for a QEMU "-serial unix:" socket. -v traces every frame.
+ * at) or -u for a QEMU "-serial unix:" socket. -t is the per-reply
+ * deadline, -w how long spl waits for the SPL to ask for U-Boot (it has
+ * to train DDR first), -v traces every frame (and every YMODEM block).
+ * idle_ms is how long the console may stay quiet before the command
+ * returns; -1 waits forever.
  */
 #include "mstarpoker.h"
 
@@ -33,17 +43,24 @@
 #include <fcntl.h>
 #endif
 
-/* Biggest file load/save handles in one go; SRAM is 64 KiB. */
-#define FILE_MAX	(1024 * 1024)
+/* Biggest file load/save/ymodem handles in one go. */
+#define FILE_MAX	(8 * 1024 * 1024)
+
+/* How long the console may stay quiet after a transfer before we return. */
+#define IDLE_AFTER_MS	10000
+
+/* How long to give the SPL to bring DDR up and ask for U-Boot. */
+#define SPL_WAIT_MS	60000
 
 static void usage(const char *argv0)
 {
 	fprintf(stderr,
-		"usage: %s [-s <serial> [-b baud] | -u <socket>] [-t ms] [-v] <cmd> [args]\n"
+		"usage: %s [-s <serial> [-b baud] | -u <socket>] [-t ms] [-w ms] [-v] <cmd> [args]\n"
 		"  ping | faults | probe <addr> | rd <addr> | wr <addr> <val>\n"
 		"  rd8 <addr> | wr8 <addr> <val> | wr16 <addr> <val>\n"
 		"  dump <addr> <nwords> | save <addr> <nbytes> <file> | load <addr> <file>\n"
-		"  go <addr> [idle_ms] | console [idle_ms]\n",
+		"  go <addr> [idle_ms] | console [idle_ms] | ymodem <file> [idle_ms]\n"
+		"  spl <spl.bin> <u-boot.img> [addr] [idle_ms]\n",
 		argv0);
 }
 
@@ -55,11 +72,15 @@ static const char *errstr(int err)
 	case MSTARPOKER_ERR_IO:
 		return "i/o error";
 	case MSTARPOKER_ERR_TIMEOUT:
-		return "timeout waiting for the stub";
+		return "timeout waiting for a reply";
 	case MSTARPOKER_ERR_PROTO:
 		return "unexpected reply from the stub";
 	case MSTARPOKER_ERR_NOSTUB:
 		return "no response from stub (is it running?)";
+	case MSTARPOKER_ERR_YMODEM:
+		return "ymodem transfer failed";
+	case MSTARPOKER_ERR_CLOSED:
+		return "the link was closed";
 	default:
 		return "error";
 	}
@@ -111,6 +132,22 @@ static int read_file(const char *path, uint8_t **out, size_t *len)
 	*out = buf;
 	*len = done;
 	return 0;
+}
+
+/* The file's name without its directory, for the YMODEM header block. */
+static const char *basename_of(const char *path)
+{
+	const char *s = strrchr(path, '/');
+
+	return s ? s + 1 : path;
+}
+
+/* Everything the target prints, until it has been quiet for idle_ms. */
+static int tail_console(struct mstarpoker *m, int idle_ms)
+{
+	ssize_t n = mstarpoker_console(m, 1, idle_ms);
+
+	return n < 0 ? (int) n : 0;
 }
 
 static int write_file(const char *path, const uint8_t *buf, size_t len)
@@ -168,11 +205,11 @@ int main(int argc, char **argv)
 {
 	struct mstarpoker m = { .fd = -1 };
 	const char *serial = NULL, *sock = NULL, *cmd;
-	int baud = MSTARPOKER_BAUD;
+	int baud = MSTARPOKER_BAUD, spl_wait = SPL_WAIT_MS;
 	int opt, ret, nargs;
 	char **args;
 
-	while ((opt = getopt(argc, argv, "s:u:b:t:v")) != -1) {
+	while ((opt = getopt(argc, argv, "s:u:b:t:w:v")) != -1) {
 		switch (opt) {
 		case 's':
 			serial = optarg;
@@ -185,6 +222,9 @@ int main(int argc, char **argv)
 			break;
 		case 't':
 			m.timeout_ms = atoi(optarg);
+			break;
+		case 'w':
+			spl_wait = atoi(optarg);
 			break;
 		case 'v':
 			m.verbose = true;
@@ -208,8 +248,10 @@ int main(int argc, char **argv)
 	if (ret)
 		return fail(serial ? serial : sock, ret);
 
-	/* console just listens; everything else needs a live stub first */
-	if (strcmp(cmd, "console")) {
+	/* console and ymodem talk to whatever owns the UART now (the SPL, once
+	 * the stub has handed over); everything else needs a live stub first
+	 */
+	if (strcmp(cmd, "console") && strcmp(cmd, "ymodem")) {
 		ret = mstarpoker_sync(&m);
 		if (ret)
 			return fail("sync", ret);
@@ -305,18 +347,60 @@ int main(int argc, char **argv)
 			       (unsigned int) len, addr);
 		free(buf);
 	} else if (!strcmp(cmd, "go") && (nargs == 1 || nargs == 2)) {
-		int idle = nargs == 2 ? atoi(args[1]) : 1000;
-
 		ret = mstarpoker_go(&m, num(args[0]));
-		if (!ret) {
-			ssize_t n = mstarpoker_console(&m, 1, idle);
-
-			ret = n < 0 ? (int) n : 0;
-		}
+		if (!ret)
+			ret = tail_console(&m, nargs == 2 ? atoi(args[1]) : 1000);
 	} else if (!strcmp(cmd, "console") && nargs <= 1) {
-		ssize_t n = mstarpoker_console(&m, 1, nargs ? atoi(args[0]) : -1);
+		ret = tail_console(&m, nargs ? atoi(args[0]) : -1);
+	} else if (!strcmp(cmd, "ymodem") && (nargs == 1 || nargs == 2)) {
+		uint8_t *buf;
+		size_t len;
 
-		ret = n < 0 ? (int) n : 0;
+		if (read_file(args[0], &buf, &len)) {
+			fprintf(stderr, "cannot read %s\n", args[0]);
+			return 1;
+		}
+		ret = mstarpoker_ymodem_send(&m, basename_of(args[0]), buf, len, 1);
+		free(buf);
+		if (!ret) {
+			fprintf(stderr, "[ymodem] sent %u bytes\n", (unsigned int) len);
+			ret = tail_console(&m, nargs == 2 ? atoi(args[1]) :
+							     IDLE_AFTER_MS);
+		}
+	} else if (!strcmp(cmd, "spl") && nargs >= 2 && nargs <= 4) {
+		uint32_t addr = nargs >= 3 ? num(args[2]) : MSTARPOKER_SPL_ADDR;
+		int idle = nargs == 4 ? atoi(args[3]) : IDLE_AFTER_MS;
+		uint8_t *spl, *uboot;
+		size_t spl_len, uboot_len;
+
+		if (read_file(args[0], &spl, &spl_len)) {
+			fprintf(stderr, "cannot read %s\n", args[0]);
+			return 1;
+		}
+		if (read_file(args[1], &uboot, &uboot_len)) {
+			fprintf(stderr, "cannot read %s\n", args[1]);
+			return 1;
+		}
+		fprintf(stderr, "[spl] uploading %s (%u bytes) to 0x%08x and running it\n",
+			args[0], (unsigned int) spl_len, addr);
+		ret = mstarpoker_spl(&m, addr, spl, spl_len,
+				     basename_of(args[1]), uboot, uboot_len,
+				     spl_wait, 1);
+		free(spl);
+		free(uboot);
+		if (ret == -MSTARPOKER_ERR_TIMEOUT)
+			fprintf(stderr, "\n[spl] no \"%s\" from the SPL; U-Boot not sent\n",
+				MSTARPOKER_SPL_MARKER);
+		else if (ret == -MSTARPOKER_ERR_PROTO)
+			fprintf(stderr, "[spl] upload verify failed: the first word read back differs\n");
+		if (!ret) {
+			fprintf(stderr, "\n[spl] sent %s (%u bytes) over YMODEM\n",
+				args[1], (unsigned int) uboot_len);
+			ret = tail_console(&m, idle);
+		} else if (ret == -MSTARPOKER_ERR_TIMEOUT ||
+			   ret == -MSTARPOKER_ERR_YMODEM) {
+			tail_console(&m, 2000);	/* show what it did say */
+		}
 	} else {
 		usage(argv[0]);
 		mstarpoker_close(&m);

@@ -50,6 +50,9 @@ jobs:
       - name: Build the C client against libc
         run: make -C cli
 
+      - name: Round-trip YMODEM and the SPL handoff against the mock receiver
+        run: make -C cli check
+
       - name: Install tarwak build dependencies
         run: |
           sudo apt-get update

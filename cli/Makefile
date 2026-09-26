@@ -54,6 +54,12 @@ else
 $(warning Pass NOLIBCDIR and NOLIBCEXTDIR to also build static nolibc binaries)
 endif
 
+# Round-trip the YMODEM sender and the SPL handoff against a mock of the
+# stub + U-Boot's xyzModem receiver (python3, no hardware needed).
+.PHONY: check
+check: $(PROGS)
+	./test/check.sh ./mstarpoker
+
 .PHONY: clean
 clean:
 	rm -f $(PROGS) $(addsuffix _nolibc,$(PROGS)) mstarpoker.tar
