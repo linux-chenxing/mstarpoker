@@ -43,11 +43,27 @@ cli/mstarpoker -u /tmp/s.ser ping              # QEMU socket
 cli/mstarpoker -s /dev/ttyUSB0 probe 0x1f224400
 cli/mstarpoker -s /dev/ttyUSB0 load 0xa0009000 prog.bin
 cli/mstarpoker -s /dev/ttyUSB0 go 0xa0009000   # ...then prints what it says
+cli/mstarpoker -s /dev/ttyUSB0 spl u-boot-spl.bin u-boot.img   # the U-Boot handoff
 ```
 
 Commands: `ping`, `faults`, `probe`, `rd`, `wr`, `rd8`, `wr8`, `wr16`,
-`dump`, `save`, `load`, `go`, `console`. `-v` traces every frame. To use
-it from C, include `cli/mstarpoker.h` in one translation unit:
+`dump`, `save`, `load`, `go`, `console`, `ymodem`, `spl`. `-v` traces
+every frame and every YMODEM block.
+
+`spl` is the whole U-Boot bring-up in one invocation, so the port is
+opened once: it uploads a mstarpoker-flavoured SPL to 0xa0004000, checks
+it, runs it, echoes the SPL's console until it prints
+`Trying to boot from UART`, then sends U-Boot over YMODEM and keeps
+echoing the console. The sender is tuned to U-Boot's xyzModem receiver
+(lazy ACKs, no second `C` after the header block, ACK-ACK-`C` on EOT).
+`ymodem <file>` is the bare primitive for scripting.
+
+Cross builds take `CROSS_COMPILE=<prefix>` and, for a static nolibc
+build, `UAPIDIR=<the target's kernel UAPI headers>`, because nolibc
+includes `<linux/types.h>` and the serial code needs `<asm/termbits.h>`
+for the target architecture.
+
+To use it from C, include `cli/mstarpoker.h` in one translation unit:
 
 ```c
 struct mstarpoker m = { 0 };
@@ -55,6 +71,19 @@ mstarpoker_open_serial(&m, "/dev/ttyUSB0", 38400);
 mstarpoker_sync(&m);
 mstarpoker_read32(&m, 0x1f203d20, &val);
 ```
+
+`mstarpoker_open_serial()` is worth knowing about on its own: it is the
+termios2 `TCGETS2`/`TCSETS2` + `BOTHER` incantation that sets a raw 8N1
+port to an arbitrary baud rate without the `Bxxx` constants, which is
+poorly documented anywhere outside the kernel. If you only want that,
+copy those twenty lines.
+
+**Do not share the port.** The protocol has no framing and no checksum,
+so a second reader on the tty makes replies come up short and the client
+time out, which is the loud, safe failure. The write direction is not
+safe: `w`, `W` and `B` take their arguments from whatever bytes follow,
+so anything typing into a shared console can write arbitrary target
+memory. One process owns the port at a time.
 
 ## Layout
 

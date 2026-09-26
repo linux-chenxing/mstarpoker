@@ -79,6 +79,15 @@ registers.
 ARM/Thumb). If the called code does `bx lr` it returns to the monitor —
 so *upload and run* is: `W` a program into SRAM, then `G` its address.
 
+**Never share the UART with anything that might type.** Ignoring unknown
+opcodes makes stray input *mostly* harmless, not entirely: `w`, `W` and
+`B` consume their address and data from whatever bytes follow, so a human
+(or a console bridge) typing into the same port can write arbitrary
+target memory. And with no framing or checksum, a second *reader* on the
+port steals reply bytes, which shows up as short reads and timeouts on the
+host — loud rather than silently wrong, which is the intended failure
+mode. One process owns the port at a time.
+
 On entry (and after a recovery, §4) the stub prints `\r\nMPOK1\r\n` so a
 human/host can see it is alive, then enters the command loop.
 
@@ -175,8 +184,10 @@ lk.upload(0xa0009000, open("p.bin","rb").read()); lk.go(0xa0009000)
 The same client as a single C header (`cli/mstarpoker.h`, all `static
 inline`) with a command-line tool in front of it, for hosts without
 Python: it builds against libc or as a static nolibc binary. Same
-commands, plus `rd8`/`wr8`/`wr16`, `save` (download memory to a file) and
-`console` (stream what the target prints). See `cli/` and the README.
+commands, plus `rd8`/`wr8`/`wr16`, `save` (download memory to a file),
+`console` (stream what the target prints), `ymodem` (send a file to a
+waiting YMODEM receiver) and `spl` (upload and run a U-Boot SPL, then
+feed it U-Boot over YMODEM, in one invocation). See `cli/` and the README.
 
 ## 7. Runtime environment and caveats
 

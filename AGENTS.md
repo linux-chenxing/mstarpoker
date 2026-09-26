@@ -41,17 +41,37 @@ make -C cli NOLIBCDIR=<linux>/tools/include/nolibc \
             NOLIBCEXTDIR=<nolibc-extensions> TARWAK=<tarwak>   # + static binary + rootfs tar
 ```
 
+Cross builds: `CROSS_COMPILE=<prefix>` and, for the static build,
+`UAPIDIR=<target kernel UAPI headers>` (nolibc includes `<linux/types.h>`,
+the serial code `<asm/termbits.h>`; the host's copies are the wrong
+architecture). The ebazfuntime tree builds it this way for an ARM board
+that drives a target over its own UART.
+
 `cli/mstarpoker.h` is the whole client (`static inline`, include it in one
 translation unit); `cli/mstarpoker.c` is the tool. Public functions are
 `mstarpoker_*`, internals `__mstarpoker_*`, errors are negated
 `MSTARPOKER_ERR_*`. Under nolibc there is no libc beyond what
 `nolibc.h` and `nolibc-extensions` provide (the unix socket comes from the
-extensions), so keep to `open/read/write/poll/ioctl` and `printf`; guard
-libc-only includes with `#ifndef NOLIBC` like the existing code. Test both
-builds against the stub in QEMU (`-u /tmp/s.ser`) before committing: at
-least `ping`, a `load`/`save` round trip, and `go` on a program that
-returns and on one that faults (the monitor must come back with `MPOK1`
-and `faults` must count it).
+extensions), so keep to `open/read/write/poll/ioctl/clock_gettime` and
+`printf`; guard libc-only includes with `#ifndef NOLIBC` like the existing
+code. Test both builds against the stub in QEMU (`-u /tmp/s.ser`) before
+committing: at least `ping`, a `load`/`save` round trip, and `go` on a
+program that returns and on one that faults (the monitor must come back
+with `MPOK1` and `faults` must count it). `make -C cli check` round-trips
+the YMODEM sender and the `spl` handoff against `cli/test/xyzmodem_mock.py`,
+a mock of the stub plus U-Boot's xyzModem receiver; run it after touching
+anything in the YMODEM or console paths. QEMU cannot test YMODEM (its UART
+model never delivers host frames to the SPL), so the mock and real silicon
+are the only oracles.
+
+The YMODEM sender is shaped by U-Boot's xyzModem, which is not the
+textbook receiver: it ACKs a block lazily (just before reading the next
+header) so there is no fresh `C` after the header block and block 1 must
+simply follow; on EOT it answers ACK, ACK, then `C` for the closing null
+header; and it repeats `C` every ~2 s while idle. A `C` inside console
+text ("CPUPLL") is not the handshake, which is why `spl` waits for the
+`Trying to boot from UART` marker first and `ymodem` only accepts a `C`
+with a quiet line behind it.
 
 ## Run it in QEMU
 
@@ -118,6 +138,11 @@ shows as no RX at all, a wrong baud as garbage.
   uploaded code runs arrive late, so `mstarpoker_sync()` drains the link
   after it matches a pong. Keep that: without it the next command reads a
   stale `SB01` as its reply.
+- `__mstarpoker_read_some()` hands back what it has when a socket peer
+  closes, and only reports `MSTARPOKER_ERR_CLOSED` when there was nothing;
+  the console tail relies on that to show the target's last words.
+- The port is never shared. `console` and `ymodem` do not sync (the stub
+  is gone once the SPL owns the UART); everything else does.
 - Commit messages: plain subject and body, no trailers.
 
 ## Layout
