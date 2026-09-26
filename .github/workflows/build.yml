@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install the ARM bare-metal toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            gcc-arm-none-eabi binutils-arm-none-eabi python3
+
+      - name: Build the stub, the on-target blobs and the flash image
+        run: make
+
+      - name: Compile-check the host scripts
+        run: python3 -m py_compile $(git ls-files '*.py')
+
+      - name: Report image sizes
+        run: |
+          ls -l stub.bin stub.ipl flash.bin \
+            scripts/ssd20x/ddr_c/ddr_init.bin \
+            scripts/common/cpuspeed_c/cpuspeed.bin
+          python3 mkipl.py stub.bin /tmp/check.ipl
+
+      - name: Upload the built images
+        uses: actions/upload-artifact@v4
+        with:
+          name: mstarpoker-images
+          path: |
+            stub.elf
+            stub.bin
+            stub.ipl
+            flash.bin
+            scripts/ssd20x/ddr_c/ddr_init.bin
+            scripts/common/cpuspeed_c/cpuspeed.bin
